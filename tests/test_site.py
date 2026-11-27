@@ -146,7 +146,8 @@ def test_site_does_not_mention_github():
     offenders = [
         p.name
         for p in SITE.rglob("*")
-        if p.is_file() and p.suffix in {".html", ".css", ".js"}
+        if p.is_file()
+        and p.suffix in {".html", ".css", ".js"}
         and "github" in p.read_text(encoding="utf-8").lower()
     ]
     assert offenders == []
