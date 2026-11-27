@@ -1,0 +1,82 @@
+/* Placeholder styling: a plain dark theme meant to be replaced. */
+:root {
+  --bg: #0f1115;
+  --surface: #181b22;
+  --text: #e6e8ee;
+  --muted: #9aa1b2;
+  --accent: #6aa8ff;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header,
+main,
+.site-footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+
+.brand { color: var(--text); font-weight: 700; font-size: 1.1rem; }
+.site-header nav a { margin-left: 20px; color: var(--muted); }
+.site-header nav a:hover { color: var(--text); text-decoration: none; }
+
+.hero { padding: 80px 0 56px; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 12px; line-height: 1.15; }
+.hero p { color: var(--muted); font-size: 1.15rem; margin: 0; }
+
+.section { padding: 32px 0; }
+.section h2 { font-size: 1.4rem; margin: 0 0 16px; }
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.card h3 { margin: 0 0 4px; font-size: 1.2rem; }
+.card p { margin: 0; color: var(--muted); }
+.card .meta { font-size: 0.85rem; margin-top: 8px; }
+
+.button {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #0b0d12;
+  font-weight: 600;
+}
+.button:hover { text-decoration: none; filter: brightness(1.1); }
+.button-disabled { background: #2a2f3a; color: var(--muted); cursor: default; }
+.button-disabled:hover { filter: none; }
+
+.muted { color: var(--muted); }
+
+.site-footer { padding: 48px 24px; color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 560px) {
+  .card { flex-direction: column; align-items: flex-start; }
+}

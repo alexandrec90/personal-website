@@ -20,9 +20,31 @@ In VS Code, `Ctrl+Shift+B` runs the default build task and the task quick-pick
 explaining what it costs and what it touches.
 
 
+## The website
+
+`site/` is the whole website: plain HTML and CSS that Cloudflare Pages serves as-is.
+There is no build step. Open `site/index.html` in a browser to preview it.
+
+**Deploying (one-time setup, free):**
+
+1. Merge to `main` (the repo is already on GitHub).
+2. In the Cloudflare dashboard, go to Workers & Pages, then Create, then Pages, then
+   Connect to Git, and pick this repo. Name the project what you want in the address:
+   the name becomes `<name>.pages.dev`.
+3. Set the production branch to `main`, framework preset to **None**, leave the build
+   command empty, and set the build output directory to `site`.
+4. Deploy. The site is live at `<project-name>.pages.dev`, and every push to `main`
+   redeploys it.
+
+**Adding an installer:** copy it to `site/downloads/` (each file must be under 25 MB,
+Cloudflare Pages' per-file limit) and turn the "Coming soon" placeholder in
+`site/index.html` into a download link. `tests/test_site.py` fails the PR gate on a
+broken link, a file over the limit, or any mention of GitHub on the site.
+
 ## Layout
 
 ```text
+site/                 the static website Cloudflare Pages serves
 personal_website/                  application code
 tests/                tests
 scripts/                 project scripts (Python, each with tests)
